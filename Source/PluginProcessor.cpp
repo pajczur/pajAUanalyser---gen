@@ -24,6 +24,8 @@ PajImpulseAudioProcessor::PajImpulseAudioProcessor()
                        )
 #endif
 {
+    wMuteMessage.setSize(1);
+    wMuteMessage.fillWith(10);
 }
 
 PajImpulseAudioProcessor::~PajImpulseAudioProcessor()
@@ -98,6 +100,12 @@ void PajImpulseAudioProcessor::prepareToPlay (double sampleRate, int samplesPerB
 {
     pajConnection.connectedWaveGen = &waves;
     beginWaitingForSocket(52425);
+    
+    if(isTimerRunning())
+         stopTimer();
+    
+    bypassTmier = round(((float)samplesPerBlock * 1000.0f) / sampleRate);
+    startTimer(bypassTmier);
 }
 
 void PajImpulseAudioProcessor::releaseResources()
@@ -132,6 +140,7 @@ bool PajImpulseAudioProcessor::isBusesLayoutSupported (const BusesLayout& layout
 
 void PajImpulseAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
+    bypassTreshold=1;
     const int totalNumInputChannels  = getTotalNumInputChannels();
     const int totalNumOutputChannels = getTotalNumOutputChannels();
     const int buffSize = buffer.getNumSamples();
@@ -170,6 +179,38 @@ void PajImpulseAudioProcessor::setStateInformation (const void* data, int sizeIn
 InterprocessConnection* PajImpulseAudioProcessor::createConnectionObject()
 {
     return &pajConnection;
+}
+
+void PajImpulseAudioProcessor::timerCallback()
+{
+    if(bypassTreshold < 0)
+    {
+        if(sendBypassMessage)
+        {
+//            if(pajConnection.isConnected())
+//                DBG("PAUSA");
+            MemoryBlock impulseMessage;
+            impulseMessage.setSize(1);
+            impulseMessage.fillWith(2);
+            pajConnection.sendMessage(impulseMessage);
+            sendBypassMessage = false;
+        }
+    }
+    else
+    {
+        bypassTreshold--;
+        
+        if(!sendBypassMessage)
+        {
+            
+//                DBG("GRAJ ZNOWU");
+            sendBypassMessage = true;
+            MemoryBlock impulseMessage;
+            impulseMessage.setSize(1);
+            impulseMessage.fillWith(1);
+            pajConnection.sendMessage(impulseMessage);
+        }
+    }
 }
 
 //==============================================================================

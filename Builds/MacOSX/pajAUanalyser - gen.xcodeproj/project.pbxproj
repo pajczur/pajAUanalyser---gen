@@ -66,14 +66,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F50BFCB52159A27A006A92A5 /* PBXContainerItemProxy */ = {
+		F534FD5421629EB10044811C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F90431C1655E2A89D248BBCE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DCC0B189EB5FAE7D2FC4CBD1;
 			remoteInfo = "pajAUanalyser - gen - AU";
 		};
-		F50BFCB62159A27A006A92A5 /* PBXContainerItemProxy */ = {
+		F534FD5521629EB10044811C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F90431C1655E2A89D248BBCE /* Project object */;
 			proxyType = 1;
@@ -298,8 +298,6 @@
 		EB55BE184E41AF5D007A7E83 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				91A9336D3E4632F2503CA4AB /* MyConnectionToAU_Analiser.cpp */,
-				F62A017848FE6CA2CED3E917 /* MyConnectionToAU_Analiser.h */,
 				2677F2F92EC47DECFF933043 /* pajczurLogo.png */,
 				F79977CFAA9048482DA85B44 /* PluginEditor.cpp */,
 				8F75014D01B5249FFA6C7390 /* PluginEditor.h */,
@@ -307,6 +305,8 @@
 				ABDA8691B8A3FB49E1750368 /* PluginProcessor.h */,
 				F3AA0F8AA1D727BC8112E55E /* WavesGen.cpp */,
 				2A1C0DCA5379BC99FD2CD5C1 /* WavesGen.h */,
+				91A9336D3E4632F2503CA4AB /* MyConnectionToAU_Analiser.cpp */,
+				F62A017848FE6CA2CED3E917 /* MyConnectionToAU_Analiser.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -461,10 +461,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53C17788537050C8F816FF23 /* MyConnectionToAU_Analiser.cpp in Sources */,
 				38A277E57CA3255137BE2F98 /* PluginEditor.cpp in Sources */,
 				A0F21A50AEE90CF4AA8E6F19 /* PluginProcessor.cpp in Sources */,
 				7B0B445DC377DB741829E3F9 /* WavesGen.cpp in Sources */,
+				53C17788537050C8F816FF23 /* MyConnectionToAU_Analiser.cpp in Sources */,
 				9C2E11A6F5596BF89C5CE55B /* BinaryData.cpp in Sources */,
 				C15A6BC79A0FC665487229E4 /* include_juce_audio_basics.mm in Sources */,
 				B831E684F0F078A7B4490A2D /* include_juce_audio_devices.mm in Sources */,
@@ -500,12 +500,12 @@
 		21609BBC0BDB3E1DB2442236 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5307FE8B07687151893DEC62 /* pajAUanalyser - gen - Shared Code */;
-			targetProxy = F50BFCB62159A27A006A92A5 /* PBXContainerItemProxy */;
+			targetProxy = F534FD5521629EB10044811C /* PBXContainerItemProxy */;
 		};
 		A80A765B83402185F457D4AC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DCC0B189EB5FAE7D2FC4CBD1 /* pajAUanalyser - gen - AU */;
-			targetProxy = F50BFCB52159A27A006A92A5 /* PBXContainerItemProxy */;
+			targetProxy = F534FD5421629EB10044811C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -639,7 +639,7 @@
 				);
 				INFOPLIST_FILE = "Info-AU.plist";
 				INFOPLIST_PREPROCESS = NO;
-				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
+				INSTALL_PATH = "/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
@@ -693,7 +693,7 @@
 				);
 				INFOPLIST_FILE = "Info-AU.plist";
 				INFOPLIST_PREPROCESS = NO;
-				INSTALL_PATH = "$(HOME)/Library/Audio/Plug-Ins/Components/";
+				INSTALL_PATH = "/Library/Audio/Plug-Ins/Components/";
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;

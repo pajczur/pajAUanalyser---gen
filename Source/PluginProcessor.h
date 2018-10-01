@@ -16,7 +16,7 @@
 //==============================================================================
 /**
  */
-class PajImpulseAudioProcessor  : public AudioProcessor, public InterprocessConnectionServer
+class PajImpulseAudioProcessor  : public AudioProcessor, public InterprocessConnectionServer, public Timer
 {
 public:
     //==============================================================================
@@ -64,9 +64,17 @@ public:
     InterprocessConnection* createConnectionObject() override;
     
     MyConnectionToAU_Analiser pajConnection;
+    void timerCallback() override;
 private:
     int sampleIntL=0;
     int sampleIntR=0;
+    
+    std::atomic<int> bypassTmier;
+    std::atomic<int> bypassTreshold;
+    
+    MemoryBlock wMuteMessage;
+    
+    bool sendBypassMessage;
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PajImpulseAudioProcessor)
