@@ -26,6 +26,10 @@ PajImpulseAudioProcessor::PajImpulseAudioProcessor()
 {
     wMuteMessage.setSize(1);
     wMuteMessage.fillWith(10);
+    pajConnection.connectedWaveGen = &waves;
+    beginWaitingForSocket(52425);
+//    sendBypassMessage = false;
+    bypassTreshold = -1;
 }
 
 PajImpulseAudioProcessor::~PajImpulseAudioProcessor()
@@ -98,8 +102,11 @@ void PajImpulseAudioProcessor::changeProgramName (int index, const String& newNa
 //==============================================================================
 void PajImpulseAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    pajConnection.connectedWaveGen = &waves;
-    beginWaitingForSocket(52425);
+    sendBypassMessage = false;
+    bypassTreshold = -1;
+    
+    if(!pajConnection.isConnected())
+        beginWaitingForSocket(52425);
     
     if(isTimerRunning())
          stopTimer();
@@ -183,32 +190,31 @@ InterprocessConnection* PajImpulseAudioProcessor::createConnectionObject()
 
 void PajImpulseAudioProcessor::timerCallback()
 {
-    if(bypassTreshold < 0)
+    if(pajConnection.isConnected())
     {
-        if(sendBypassMessage)
+        if(bypassTreshold < 0)
         {
-//            if(pajConnection.isConnected())
-//                DBG("PAUSA");
-            MemoryBlock impulseMessage;
-            impulseMessage.setSize(1);
-            impulseMessage.fillWith(2);
-            pajConnection.sendMessage(impulseMessage);
-            sendBypassMessage = false;
+            if(sendBypassMessage)
+            {
+                MemoryBlock impulseMessage;
+                impulseMessage.setSize(1);
+                impulseMessage.fillWith(pajOffButtonID);
+                pajConnection.sendMessage(impulseMessage);
+                sendBypassMessage = false;
+            }
         }
-    }
-    else
-    {
-        bypassTreshold--;
-        
-        if(!sendBypassMessage)
+        else
         {
+            bypassTreshold--;
             
-//                DBG("GRAJ ZNOWU");
-            sendBypassMessage = true;
-            MemoryBlock impulseMessage;
-            impulseMessage.setSize(1);
-            impulseMessage.fillWith(1);
-            pajConnection.sendMessage(impulseMessage);
+            if(!sendBypassMessage)
+            {
+                sendBypassMessage = true;
+                MemoryBlock impulseMessage;
+                impulseMessage.setSize(1);
+                impulseMessage.fillWith(waves.pajBuff);
+                pajConnection.sendMessage(impulseMessage);
+            }
         }
     }
 }

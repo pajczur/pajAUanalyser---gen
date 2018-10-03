@@ -28,6 +28,7 @@ public:
 
     WavesGen *connectedWaveGen;
     bool pajTurnON;
+
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MyConnectionToAU_Analiser)
 };

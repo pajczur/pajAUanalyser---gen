@@ -37,40 +37,46 @@ void WavesGen::settings(double sampRate, int buffsize)
 
 void WavesGen::wSetImpulse(impulseID wImp)
 {
-//    wImpulseID = wImp;
-    
     switch (wImp)
     {
         case wMute:
             pajPhase = -1;
+            pajBuff = wMute;
             break;
             
         case w1024:
             pajPhase = 1024;
+            pajBuff = w1024;
             break;
             
         case w2048:
             pajPhase = 2048;
+            pajBuff = w2048;
             break;
             
         case w4096:
             pajPhase = 4096;
+            pajBuff = w4096;
             break;
             
         case w8192:
             pajPhase = 8192;
+            pajBuff = w8192;
             break;
             
         case w16384:
             pajPhase = 16384;
+            pajBuff = w16384;
             break;
             
         case w32768:
             pajPhase = 32768;
+            pajBuff = w32768;
             break;
             
         case w65536:
             pajPhase = 65536;
+            pajBuff = w65536;
             break;
             
         default:
@@ -82,39 +88,6 @@ void WavesGen::wSetImpulse(impulseID wImp)
     if(wImp==wMute) pajPlay=false;
     else            pajPlay=true;
 }
-
-//double WavesGen::impulseOscillator(int wImpID)
-//{
-//    switch (wImpID)
-//    {
-//        case wMute:
-//            return 0.0;
-//
-//        case w1024:
-//            return imp1024();
-//
-//        case w2048:
-//            return imp2048();
-//
-//        case w4096:
-//            return imp4096();
-//
-//        case w8192:
-//            return imp8192();
-//
-//        case w16384:
-//            return imp16384();
-//
-//        case w32768:
-//            return imp32768();
-//
-//        case w65536:
-//            return imp65536();
-//
-//        default:
-//            return 0.0;
-//    }
-//}
 
 
 void WavesGen::playImpulse(AudioBuffer<float> &outputBuffer, float bufSize, int channelQuantity)
@@ -129,19 +102,16 @@ void WavesGen::playImpulse(AudioBuffer<float> &outputBuffer, float bufSize, int 
         
         for (int sample=0; sample<bufSize; sample++)
         {
-//            double voice = impulseOscillator(wImpulseID);
             double voice = pajImp();
 
             for(int channel=0; channel<channelQuantity; ++channel)
             {
-//                outputBuffer.addSample(channel, sample, voice);
                 channelData[channel][sample] = voice;
             }
         }
     }
+    else
+    {
+        return;
+    }
 }
-
-//int WavesGen::getImpulseID()
-//{
-//    return wImpulseID;
-//}

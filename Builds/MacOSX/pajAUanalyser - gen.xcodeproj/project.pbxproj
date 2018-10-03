@@ -66,14 +66,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F534FD5421629EB10044811C /* PBXContainerItemProxy */ = {
+		F534FD62216534730044811C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F90431C1655E2A89D248BBCE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DCC0B189EB5FAE7D2FC4CBD1;
 			remoteInfo = "pajAUanalyser - gen - AU";
 		};
-		F534FD5521629EB10044811C /* PBXContainerItemProxy */ = {
+		F534FD63216534730044811C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F90431C1655E2A89D248BBCE /* Project object */;
 			proxyType = 1;
@@ -500,12 +500,12 @@
 		21609BBC0BDB3E1DB2442236 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5307FE8B07687151893DEC62 /* pajAUanalyser - gen - Shared Code */;
-			targetProxy = F534FD5521629EB10044811C /* PBXContainerItemProxy */;
+			targetProxy = F534FD63216534730044811C /* PBXContainerItemProxy */;
 		};
 		A80A765B83402185F457D4AC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DCC0B189EB5FAE7D2FC4CBD1 /* pajAUanalyser - gen - AU */;
-			targetProxy = F534FD5421629EB10044811C /* PBXContainerItemProxy */;
+			targetProxy = F534FD62216534730044811C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

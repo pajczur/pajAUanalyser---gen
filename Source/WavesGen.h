@@ -51,6 +51,7 @@ private:
 public:
     int pajPhase;
     int phase_i;
+    int pajBuff;
 
     
     std::atomic<bool> pajPlay;

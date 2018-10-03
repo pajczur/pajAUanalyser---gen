@@ -75,6 +75,11 @@ private:
     MemoryBlock wMuteMessage;
     
     bool sendBypassMessage;
+
+public:
+    enum buttonsID {
+        pajOffButtonID      = 110
+    };
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PajImpulseAudioProcessor)
