@@ -18,11 +18,8 @@ PajImpulseAudioProcessorEditor::PajImpulseAudioProcessorEditor (PajImpulseAudioP
 {
     setSize (300, 300);
     
-    addAndMakeVisible(&wMuteButton);
-    wMuteButton.setButtonText("Turn OFF");
-    wMuteButton.onClick = [this] { updateToggleState(&wMuteButton, wMute); };
-    wMuteButton.setBounds        (100, 100, 100, 100);
-    logoSpace.setBounds(4.5, 5, 40, 40);
+    logoSpace.setBounds(4.5, 5, 48, 48);
+    wallPaperSpace.setBounds(0, 0, getWidth(), getHeight());
     
     wMuteMessage.setSize(1);
     wMuteMessage.fillWith(10);
@@ -35,37 +32,14 @@ PajImpulseAudioProcessorEditor::~PajImpulseAudioProcessorEditor()
 //==============================================================================
 void PajImpulseAudioProcessorEditor::paint (Graphics& g)
 {
-    g.fillAll(Colours::indigo);
-    
-    g.setColour (Colours::lightblue);
-    
-    //    g.drawRect(margX, 5, 600, 40);
-    g.drawRoundedRectangle(logoSpace, 10.f, 1.0f);
+//    g.fillAll(Colours::black);
+    //    g.fillAll(Colour(0x40, 0x44, 0x4c));
+    g.fillAll(Colour(0x3c, 0x3d, 0x3e));
+
+    g.drawImage(pajWallPaper, wallPaperSpace);
     g.drawImage(pajLogo, logoSpace);
 }
 
 void PajImpulseAudioProcessorEditor::resized()
 {
-}
-
-
-
-
-void PajImpulseAudioProcessorEditor::updateToggleState(Button* button, int waveIdentifier)
-{
-    processor.waves.wSetImpulse(wMute);
-    
-    if(processor.pajConnection.pajTurnON)
-    {
-        int milisecondsToWait = roundToInt(2000.0f*(double)processor.waves.pajPhase / processor.getSampleRate());
-        
-        startTimer(milisecondsToWait);
-    }
-}
-
-
-void PajImpulseAudioProcessorEditor::timerCallback()
-{
-    stopTimer();
-    processor.pajConnection.sendMessage(wMuteMessage);
 }

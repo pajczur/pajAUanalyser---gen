@@ -39,36 +39,36 @@ void MyConnectionToAU_Analiser::messageReceived( const MemoryBlock & message)
     
     switch (pajImpID)
     {
-        case wMute:
-            connectedWaveGen->wSetImpulse(wMute);
+        case MUTE_IMPULSE_ID:
+            connectedWaveGen->wSetImpulse(MUTE_IMPULSE_ID);
             pajTurnON = false;
             break;
-        case w1024:
-            connectedWaveGen->wSetImpulse(w1024);
+        case B_1024ID:
+            connectedWaveGen->wSetImpulse(B_1024ID);
             pajTurnON = true;
             break;
-        case w2048:
-            connectedWaveGen->wSetImpulse(w2048);
+        case B_2048ID:
+            connectedWaveGen->wSetImpulse(B_2048ID);
             pajTurnON = true;
             break;
-        case w4096:
-            connectedWaveGen->wSetImpulse(w4096);
+        case B_4096ID:
+            connectedWaveGen->wSetImpulse(B_4096ID);
             pajTurnON = true;
             break;
-        case w8192:
-            connectedWaveGen->wSetImpulse(w8192);
+        case B_8192ID:
+            connectedWaveGen->wSetImpulse(B_8192ID);
             pajTurnON = true;
             break;
-        case w16384:
-            connectedWaveGen->wSetImpulse(w16384);
+        case B_16384ID:
+            connectedWaveGen->wSetImpulse(B_16384ID);
             pajTurnON = true;
             break;
-        case w32768:
-            connectedWaveGen->wSetImpulse(w32768);
+        case B_32768ID:
+            connectedWaveGen->wSetImpulse(B_32768ID);
             pajTurnON = true;
             break;
-        case w65536:
-            connectedWaveGen->wSetImpulse(w65536);
+        case B_65536ID:
+            connectedWaveGen->wSetImpulse(B_65536ID);
             pajTurnON = true;
             break;
             

@@ -13,6 +13,9 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MyConnectionToAU_Analiser.h"
 
+#define MUTE_IMPULSE_ID 7
+#define PAJ_PLAY 19
+
 //==============================================================================
 /**
  */
@@ -76,10 +79,6 @@ private:
     
     bool sendBypassMessage;
 
-public:
-    enum buttonsID {
-        pajOffButtonID      = 110
-    };
     
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PajImpulseAudioProcessor)

@@ -35,48 +35,48 @@ void WavesGen::settings(double sampRate, int buffsize)
 }
 
 
-void WavesGen::wSetImpulse(impulseID wImp)
+void WavesGen::wSetImpulse(int wImpID)
 {
-    switch (wImp)
+    switch (wImpID)
     {
-        case wMute:
+        case MUTE_IMPULSE_ID:
             pajPhase = -1;
-            pajBuff = wMute;
+            pajBuff = MUTE_IMPULSE_ID;
             break;
             
-        case w1024:
+        case B_1024ID:
             pajPhase = 1024;
-            pajBuff = w1024;
+            pajBuff = B_1024ID;
             break;
             
-        case w2048:
+        case B_2048ID:
             pajPhase = 2048;
-            pajBuff = w2048;
+            pajBuff = B_2048ID;
             break;
             
-        case w4096:
+        case B_4096ID:
             pajPhase = 4096;
-            pajBuff = w4096;
+            pajBuff = B_4096ID;
             break;
             
-        case w8192:
+        case B_8192ID:
             pajPhase = 8192;
-            pajBuff = w8192;
+            pajBuff = B_8192ID;
             break;
             
-        case w16384:
+        case B_16384ID:
             pajPhase = 16384;
-            pajBuff = w16384;
+            pajBuff = B_16384ID;
             break;
             
-        case w32768:
+        case B_32768ID:
             pajPhase = 32768;
-            pajBuff = w32768;
+            pajBuff = B_32768ID;
             break;
             
-        case w65536:
+        case B_65536ID:
             pajPhase = 65536;
-            pajBuff = w65536;
+            pajBuff = B_65536ID;
             break;
             
         default:
@@ -85,8 +85,8 @@ void WavesGen::wSetImpulse(impulseID wImp)
     }
     
     
-    if(wImp==wMute) pajPlay=false;
-    else            pajPlay=true;
+    if(wImpID==MUTE_IMPULSE_ID) pajPlay=false;
+    else                        pajPlay=true;
 }
 
 

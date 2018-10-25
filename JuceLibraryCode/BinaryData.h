@@ -8,11 +8,14 @@
 
 namespace pajImpulse
 {
-    extern const char*   pajczurLogo_png;
-    const int            pajczurLogo_pngSize = 577;
+    extern const char*   pajLogoYellow_png;
+    const int            pajLogoYellow_pngSize = 11485;
+
+    extern const char*   impulseIcon_png;
+    const int            impulseIcon_pngSize = 879;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1;
+    const int namedResourceListSize = 2;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

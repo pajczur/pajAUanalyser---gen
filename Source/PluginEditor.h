@@ -16,34 +16,27 @@
 //==============================================================================
 /**
 */
-class PajImpulseAudioProcessorEditor  : public AudioProcessorEditor, public Timer
+class PajImpulseAudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
     PajImpulseAudioProcessorEditor (PajImpulseAudioProcessor&);
     ~PajImpulseAudioProcessorEditor();
     
-    void updateToggleState(Button* button, int waveIdentifier);
-    
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
-    
-    void timerCallback() override;
     
 private:
     PajImpulseAudioProcessor& processor;
     
     Rectangle<float> logoSpace;
-    const String pathToLogo = "/Users/wojtekpilwinski/Development/PublicRepositories/pajAUanalyser - gen/Source/pajczurLogo.png";
-    File pajLogoFile = pathToLogo ;
-    Image pajLogo = ImageFileFormat::loadFrom(pajLogoFile);
+    Image pajLogo = ImageCache::getFromMemory(pajImpulse::pajLogoYellow_png, pajImpulse::pajLogoYellow_pngSize);
     
-    // Buttons
-    TextButton wMuteButton;
+    Rectangle<float> wallPaperSpace;
+    Image pajWallPaper = ImageCache::getFromMemory(pajImpulse::impulseIcon_png, pajImpulse::impulseIcon_pngSize);
     
     MemoryBlock wMuteMessage;
-    
-    Label temppp;
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PajImpulseAudioProcessorEditor)
 };

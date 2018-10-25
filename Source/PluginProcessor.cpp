@@ -198,7 +198,7 @@ void PajImpulseAudioProcessor::timerCallback()
             {
                 MemoryBlock impulseMessage;
                 impulseMessage.setSize(1);
-                impulseMessage.fillWith(pajOffButtonID);
+                impulseMessage.fillWith(MUTE_IMPULSE_ID);
                 pajConnection.sendMessage(impulseMessage);
                 sendBypassMessage = false;
             }
@@ -212,7 +212,7 @@ void PajImpulseAudioProcessor::timerCallback()
                 sendBypassMessage = true;
                 MemoryBlock impulseMessage;
                 impulseMessage.setSize(1);
-                impulseMessage.fillWith(waves.pajBuff);
+                impulseMessage.fillWith(PAJ_PLAY);
                 pajConnection.sendMessage(impulseMessage);
             }
         }

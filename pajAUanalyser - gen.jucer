@@ -9,7 +9,11 @@
               pluginAUMainType="'aufx'" binaryDataNamespace="pajImpulse">
   <MAINGROUP id="fcomgL" name="pajAUanalyser - gen">
     <GROUP id="{BECFB681-3EEB-CABD-A975-CEF58E630DB8}" name="Source">
-      <FILE id="Kmdrqi" name="pajczurLogo.png" compile="0" resource="1" file="Source/pajczurLogo.png"/>
+      <GROUP id="{6BD043E1-68AE-3C2F-20C3-9BFF0851DA4F}" name="Resources">
+        <FILE id="pfbIIJ" name="pajLogoYellow.png" compile="0" resource="1"
+              file="Source/Resources/pajLogoYellow.png"/>
+        <FILE id="wOVVrh" name="impulseIcon.png" compile="0" resource="1" file="Source/Resources/impulseIcon.png"/>
+      </GROUP>
       <FILE id="aw9TF7" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
       <FILE id="VXJCgL" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
@@ -29,7 +33,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION isDebug="1" name="Debug" auBinaryLocation="/Library/Audio/Plug-Ins/Components/"
-                       targetName="pajAUanalyser - gen"/>
+                       targetName="pajAUanalyser - gen" optimisation="6"/>
         <CONFIGURATION isDebug="0" name="Release" optimisation="6" auBinaryLocation="/Library/Audio/Plug-Ins/Components/"
                        targetName="pajAUanalyser - gen"/>
       </CONFIGURATIONS>

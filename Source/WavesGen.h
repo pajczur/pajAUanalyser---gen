@@ -16,17 +16,14 @@
 /*
 */
 
-enum impulseID
-{
-    wMute  = 0,
-    w1024  = 1,
-    w2048  = 2,
-    w4096  = 3,
-    w8192  = 4,
-    w16384 = 5,
-    w32768 = 6,
-    w65536 = 7
-};
+#define B_1024ID        0
+#define B_2048ID        1
+#define B_4096ID        2
+#define B_8192ID        3
+#define B_16384ID       4
+#define B_32768ID       5
+#define B_65536ID       6
+#define MUTE_IMPULSE_ID 7
 
 
 class WavesGen
@@ -42,7 +39,7 @@ private:
     
     
 public:
-    void wSetImpulse(impulseID wImp);
+    void wSetImpulse(int wImpID);
     void playImpulse(AudioBuffer<float> &outputBuffer, float bufferSize, int channelQuantity);
 
 private:
