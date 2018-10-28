@@ -32,9 +32,7 @@ PajImpulseAudioProcessorEditor::~PajImpulseAudioProcessorEditor()
 //==============================================================================
 void PajImpulseAudioProcessorEditor::paint (Graphics& g)
 {
-//    g.fillAll(Colours::black);
-    //    g.fillAll(Colour(0x40, 0x44, 0x4c));
-    g.fillAll(Colour(0x3c, 0x3d, 0x3e));
+    g.fillAll(Colours::black);
 
     g.drawImage(pajWallPaper, wallPaperSpace);
     g.drawImage(pajLogo, logoSpace);
